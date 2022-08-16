@@ -38,7 +38,9 @@ const login = asyncHandler(async (req, res) => {
 			name: user.name,
 			image: user.image,
 			phone: user.phone,
-			token: generateToken(user._id),
+			userToken: generateToken(user._id),
+			isAdmin: user.isAdmin,
+			voted: user.voted
 		})
 	} else {
 		res.status(401)
@@ -55,6 +57,8 @@ const profile = asyncHandler(async (req, res) => {
 			name: user.name,
 			image: user.image,
 			phone: user.phone,
+			isAdmin: user.isAdmin,
+			voted: user.voted
 		})
 	} else {
 		res.status(404)
